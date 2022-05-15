@@ -71,7 +71,7 @@ where d.location_id = l.location_id
 and l.country_id = c.country_id
 order by country_name;
 --7
-select e.employee_id
+/* select e.employee_id
     ,first_name||' '||last_name
     ,job_id
     ,start_date
@@ -80,7 +80,16 @@ from jobs j right outer join employees e
 on j.job_id = e.job_id
 right outer join job_history jh
 on j.job_id = jh.job_id
-where job_id = 'AC_ACCOUNT';
+where job_id = 'AC_ACCOUNT'; */
+
+select e.employee_id
+    ,first_name||' '||last_name
+    ,e.job_id
+    ,start_date
+    ,end_date
+from employees e, job_history jh
+where e.employee_id = jh.employee_id
+and jh.job_id = 'AC_ACCOUNT';
 --8
 select e.department_id
     ,department_name
