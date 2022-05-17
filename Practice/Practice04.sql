@@ -14,15 +14,9 @@ select e.employee_id
     ,avgmax.maxsalary
 from employees e, (select round(avg(salary)) avgsalary
                         ,max(salary) maxsalary
-                    from employees
-                    where salary >= (select round(avg(salary))
-                    from employees)
-                    and salary <= (select max(salary)
-                    from employees)) avgmax
-where salary >= (select round(avg(salary))
-                from employees)
-and salary <= (select max(salary)
-                from employees)
+                    from employees) avgmax
+where e.salary >= avgsalary
+and e.salary <= maxsalary
 order by salary;
 
 --3
