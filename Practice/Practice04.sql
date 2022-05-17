@@ -10,8 +10,8 @@ where salary < (select avg(salary)
 select e.employee_id
     ,e.first_name
     ,e.salary
-    ,avgmax.avgsalary
-    ,avgmax.maxsalary
+    ,avgsalary
+    ,maxsalary
 from employees e, (select round(avg(salary)) avgsalary
                         ,max(salary) maxsalary
                     from employees) avgmax
