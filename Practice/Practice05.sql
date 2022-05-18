@@ -42,11 +42,12 @@ where e.employee_id = m.manager_id;
 select e.employee_id
     ,e.first_name
     ,department_name
-    ,m.first_name
+    ,m.first_name 매니저이름
 from employees e left outer join departments d
 on e.department_id = d.department_id
 left outer join employees m
-on e.manager_id = m.employee_id;
+on e.manager_id = m.employee_id
+where e.manager_id is not null;
 --05
 select *
 from (select rownum rn
